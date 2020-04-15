@@ -89,6 +89,11 @@ export class MDCCheckbox extends MDCComponent<MDCCheckboxFoundation> implements 
   private handleChange_!: EventListener; // assigned in initialSyncWithDOM()
   private handleAnimationEnd_!: EventListener; // assigned in initialSyncWithDOM()
 
+  initialize() {
+    this.nativeControl_.indeterminate =
+        this.nativeControl_.getAttribute('data-indeterminate') === 'true';
+  }
+
   initialSyncWithDOM() {
     this.handleChange_ = () => this.foundation_.handleChange();
     this.handleAnimationEnd_ = () => this.foundation_.handleAnimationEnd();
@@ -115,10 +120,18 @@ export class MDCCheckbox extends MDCComponent<MDCCheckboxFoundation> implements 
       isAttachedToDOM: () => Boolean(this.root_.parentNode),
       isChecked: () => this.checked,
       isIndeterminate: () => this.indeterminate,
-      removeClass: (className) => this.root_.classList.remove(className),
-      removeNativeControlAttr: (attr) => this.nativeControl_.removeAttribute(attr),
-      setNativeControlAttr: (attr, value) => this.nativeControl_.setAttribute(attr, value),
-      setNativeControlDisabled: (disabled) => this.nativeControl_.disabled = disabled,
+      removeClass: (className) => {
+        this.root_.classList.remove(className);
+      },
+      removeNativeControlAttr: (attr) => {
+        this.nativeControl_.removeAttribute(attr);
+      },
+      setNativeControlAttr: (attr, value) => {
+        this.nativeControl_.setAttribute(attr, value);
+      },
+      setNativeControlDisabled: (disabled) => {
+        this.nativeControl_.disabled = disabled;
+      },
     };
     return new MDCCheckboxFoundation(adapter);
   }

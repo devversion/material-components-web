@@ -117,12 +117,24 @@ export class MDCCheckboxFoundation extends MDCFoundation<MDCCheckboxAdapter> {
 
     this.updateAriaChecked_();
 
-    const {TRANSITION_STATE_UNCHECKED} = strings;
+    const {
+      TRANSITION_STATE_UNCHECKED,
+      TRANSITION_STATE_INDETERMINATE,
+      DATA_INDETERMINATE_ATTR,
+      DATA_INDETERMINATE_ATTR_VALUE
+    } = strings;
     const {SELECTED} = cssClasses;
     if (newState === TRANSITION_STATE_UNCHECKED) {
       this.adapter_.removeClass(SELECTED);
     } else {
       this.adapter_.addClass(SELECTED);
+    }
+
+    if (newState === TRANSITION_STATE_INDETERMINATE) {
+      this.adapter_.setNativeControlAttr(
+          DATA_INDETERMINATE_ATTR, DATA_INDETERMINATE_ATTR_VALUE);
+    } else {
+      this.adapter_.removeNativeControlAttr(DATA_INDETERMINATE_ATTR);
     }
 
     // Check to ensure that there isn't a previously existing animation class, in case for example

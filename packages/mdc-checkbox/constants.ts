@@ -44,6 +44,8 @@ export const cssClasses = {
 export const strings = {
   ARIA_CHECKED_ATTR: 'aria-checked',
   ARIA_CHECKED_INDETERMINATE_VALUE: 'mixed',
+  DATA_INDETERMINATE_ATTR: 'data-indeterminate',
+  DATA_INDETERMINATE_ATTR_VALUE: 'true',
   NATIVE_CONTROL_SELECTOR: '.mdc-checkbox__native-control',
   TRANSITION_STATE_CHECKED: 'checked',
   TRANSITION_STATE_INDETERMINATE: 'indeterminate',
