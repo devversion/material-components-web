@@ -73,6 +73,10 @@ $ripple-target: ".mdc-fab__ripple";
     }
   }
 
+  .mdc-fab__outline-overlay {
+    @include outline-overlay_($query: $query);
+  }
+
   .mdc-fab__label {
     @include label_($query: $query);
   }
@@ -367,6 +371,26 @@ $icon-enter-duration_: 180ms;
     white-space: nowrap;
     overflow-x: hidden;
     overflow-y: visible;
+  }
+}
+
+///
+/// Creates a transparent border around the fab that is only visible in
+/// high-contrast mode.
+/// @access private
+///
+@mixin outline-overlay_($query: feature-targeting-functions.all()) {
+  $feat-structure: feature-targeting-functions.create-target($query, structure);
+
+  @include feature-targeting-mixins.targets($feat-structure) {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid transparent;
+    border-radius: inherit;
   }
 }
 
