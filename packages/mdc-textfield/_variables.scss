@@ -89,9 +89,7 @@ $density-config: (
 ) !default;
 $label-position-y: floating-label-variables.$position-y !default;
 $label-offset: 16px !default;
-$outlined-label-position-y:
-    get-outlined-label-position-y($height) !default;
-$outlined-with-leading-icon-label-position-x: 0 !default;
+$outlined-with-leading-icon-label-position-x: 32px !default;
 $textarea-label-position-y: 130% !default;
 $helper-line-padding: 16px !default;
 $filled-baseline-top: 40px !default;
