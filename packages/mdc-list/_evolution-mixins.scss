@@ -694,14 +694,8 @@
 ) {
   $feat-structure: feature-targeting.create-target($query, structure);
   @include feature-targeting.targets($feat-structure) {
-    // Extra specificity needed to override default customizations.
-    &.mdc-list-item {
-      // We rely on auto to avoid clobbering the opposite padding.
-      @include rtl-mixins.reflexive-property(padding, 0, auto);
-    }
-
     .mdc-list-item__start {
-      @include rtl-mixins.reflexive-property(margin, $leading, $trailing);
+      @include rtl-mixins.reflexive-property(margin, $leading - 16px, $trailing);
     }
   }
 }
@@ -720,7 +714,7 @@
     }
 
     .mdc-list-item__end {
-      @include rtl-mixins.reflexive-property(margin, $leading, $trailing);
+      @include rtl-mixins.reflexive-property(margin, $leading, $trailing - 16px);
     }
   }
 }
